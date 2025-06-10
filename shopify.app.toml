@@ -1,0 +1,35 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "3ba874fdd76d08930c3c428ceb0ebb61"
+name = "test3"
+handle = "test3-351"
+application_url = "https://shopfiy-cicd-76201301621.us-central1.run.app/"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://shopfiy-cicd-76201301621.us-central1.run.app/auth/callback",
+  "https://shopfiy-cicd-76201301621.us-central1.run.app/auth/shopify/callback",
+  "https://shopfiy-cicd-76201301621.us-central1.run.app/api/auth/callback"
+]
+
+[pos]
+embedded = false
